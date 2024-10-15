@@ -21,10 +21,7 @@ const connectDB = (uri) => {
 };
 
 const sendToken = (res, user, code, message) => {
-  console.log("jijkj");
-
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-  console.log("jijkj");
 
   return res.status(code).cookie("chattu-token", token, cookieOptions).json({
     success: true,
@@ -49,7 +46,6 @@ const uploadFilesToCloudinary = async (files = []) => {
           public_id: uuid(),
         },
         (error, result) => {
-          console.log("jjjjjjjjj");
           if (error) return reject(error);
           resolve(result);
         }
